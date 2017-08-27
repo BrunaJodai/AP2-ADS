@@ -8,14 +8,14 @@ vetor do tipo String de tamanho 50. O programa deve possuir o seguinte menu:
 Observações
  ~AO ADICIONAR UM NOVO NOME:
 (x) O nome deve ser lido via teclado;
-( ) O nome deve ser inserido no final da lista;
+(x) O nome deve ser inserido no final da lista;
 (x) Caso a lista esteja cheia, apresentar uma mensagem indicativa ao usuário e não adicionar o nome
 na lista;
 (x) Não é permitido adicionar um nome já existente na lista. Caso já exista o nome na lista, apresentar
 uma mensagem indicativa ao usuário.
  ~AO APRESENTAR OS NOMES:
 (x) Se a lista estiver vazia, apresentar uma mensagem indicativa ao usuário;
-( ) Os nomes devem ser apresentados na ordem em que foram inseridos na lista.
+(x) Os nomes devem ser apresentados na ordem em que foram inseridos na lista.
  ~AO PESQUISAR UM NOME:
 (x) Ler via teclado o nome a ser pesquisado;
 (x) Apresentar uma mensagem informando se o nome foi ou não encontrado. Caso o nome tenha sido
@@ -120,11 +120,13 @@ public class AP2_ADO1 {
     static void pesquisaNome(String[] listaNomes) {
         System.out.print("Nome a ser pesquisado: ");
         String pesquisa = console.nextLine();
+        pesquisa = pesquisa.toUpperCase().trim();
+
         for (int i = 0; i < listaNomes.length; i++) {
             if (listaNomes[i].equals(pesquisa)) {
                 System.out.printf("-- Nome encontrado na posição %d do vetor --\n", i);
                 break;
-            } else {
+            } else if (i == (listaNomes.length - 1)) {
                 System.out.println("-- Nome não encontrado na lista --\n");
             }
         }
@@ -133,6 +135,7 @@ public class AP2_ADO1 {
     static String[] removeNome(String[] listaNomes) {
         System.out.print("Nome que deseja remover: ");
         String nomeDelet = console.nextLine();
+        nomeDelet = nomeDelet.toUpperCase().trim();
 
         for (int i = 0; i < listaNomes.length; i++) {
             if (listaNomes[i].equals(nomeDelet)) {
