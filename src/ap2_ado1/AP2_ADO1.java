@@ -5,28 +5,15 @@ vetor do tipo String de tamanho 50. O programa deve possuir o seguinte menu:
 ( )3 - Pesquisar um nome
 ( )4 - Remover um nome
 (x)0 - Sair
-Observações
- ~AO ADICIONAR UM NOVO NOME:
-(x) O nome deve ser lido via teclado;
-(x) O nome deve ser inserido no final da lista;
-(x) Caso a lista esteja cheia, apresentar uma mensagem indicativa ao usuário e não adicionar o nome
-na lista;
-(x) Não é permitido adicionar um nome já existente na lista. Caso já exista o nome na lista, apresentar
-uma mensagem indicativa ao usuário.
- ~AO APRESENTAR OS NOMES:
-(x) Se a lista estiver vazia, apresentar uma mensagem indicativa ao usuário;
-(x) Os nomes devem ser apresentados na ordem em que foram inseridos na lista.
- ~AO PESQUISAR UM NOME:
-(x) Ler via teclado o nome a ser pesquisado;
-(x) Apresentar uma mensagem informando se o nome foi ou não encontrado. Caso o nome tenha sido
-encontrado, apresentar também a posição do nome no vetor.
+Observações:
  ~AO REMOVER UM NOME:
-( ) Ler via teclado o nome a ser removido;
+(x) Ler via teclado o nome a ser removido;
 ( ) Se o nome informado não estiver na lista, apresentar uma mensagem indicativa ao usuário;
 ( ) A posição que contém o nome a ser removido deve ser preenchida com o próximo nome e assim
 sucessivamente. Não podem haver posições vazias no meio do vetor.
 
-( ) tratar erro de digitar em formato diferente (try and catch)*/
+( ) tratar erro de digitar em formato diferente (try and catch)
+( ) melhoras as msgs apresentadas ao usuário*/
 package ap2_ado1;
 
 import java.util.Scanner;
@@ -139,8 +126,10 @@ public class AP2_ADO1 {
 
         for (int i = 0; i < listaNomes.length; i++) {
             if (listaNomes[i].equals(nomeDelet)) {
-                listaNomes[i] = "";
+                listaNomes[i] = null;
                 break;
+            } else if (i == (listaNomes.length - 1)) {
+                System.out.println("-- Nome não encontrado na lista --\n");
             }
         }
         return listaNomes;
