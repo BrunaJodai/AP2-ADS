@@ -9,12 +9,12 @@ Observações
  ~AO ADICIONAR UM NOVO NOME:
 (x) O nome deve ser lido via teclado;
 ( ) O nome deve ser inserido no final da lista;
-( ) Caso a lista esteja cheia, apresentar uma mensagem indicativa ao usuário e não adicionar o nome
+(x) Caso a lista esteja cheia, apresentar uma mensagem indicativa ao usuário e não adicionar o nome
 na lista;
 (x) Não é permitido adicionar um nome já existente na lista. Caso já exista o nome na lista, apresentar
 uma mensagem indicativa ao usuário.
  ~AO APRESENTAR OS NOMES:
-( ) Se a lista estiver vazia, apresentar uma mensagem indicativa ao usuário;
+(x) Se a lista estiver vazia, apresentar uma mensagem indicativa ao usuário;
 ( ) Os nomes devem ser apresentados na ordem em que foram inseridos na lista.
  ~AO PESQUISAR UM NOME:
 (x) Ler via teclado o nome a ser pesquisado;
@@ -65,7 +65,6 @@ public class AP2_ADO1 {
         } while (!sair);
     }
 
-    //mostra o menu 
     static int mostrarMenu() {
         System.out.println("\n~~ MENU ~~");
         System.out.println("1 - Adicionar um novo nome;\n"
@@ -82,11 +81,8 @@ public class AP2_ADO1 {
     static String[] adicionaNome(String[] listaNomes) {
         System.out.print("Nome: ");
         String nome = console.nextLine();
-        
-        //testar se realmente deixou td em maiúsculo e removeu os espaços nas extremidades
-        nome.toUpperCase().trim();
+        nome = nome.toUpperCase().trim();
 
-        //mostrando sempre lista cheia, apesar de não estar
         for (int i = 0; i < listaNomes.length; i++) {
             if (listaNomes[i] == null) {
                 listaNomes[i] = nome;
@@ -95,20 +91,29 @@ public class AP2_ADO1 {
             } else if (listaNomes[i].equals(nome)) {
                 System.out.println("-- Nome já existente na lista --\n");
                 break;
-            } else {
-                System.out.println("-- Lista cheia. Não é possível adicionar mais --\n");
-                i = listaNomes.length;
+            } else if (i == (listaNomes.length - 1)) {
+                System.out.println("-- Lista cheia. Não é possível adicionar mais nomes--\n");
             }
         }
+
         return listaNomes;
     }
 
     //mostrando somente a primeira posição do vetor
     static void apresentaNomes(String[] listaNomes) {
+        int vazio = 0;
+
         for (int i = 0; i < listaNomes.length; i++) {
-            if (listaNomes[i] != null) {
+            if (listaNomes[i] == null) {
+                vazio++;
+                //System.out.println("vazios: " +vazio);
+            } else {
                 System.out.printf("[%d]: %s\n", i, listaNomes[i]);
             }
+        }
+
+        if (vazio == listaNomes.length) {
+            System.out.println("-- Lista vazia --");
         }
     }
 
