@@ -1,7 +1,3 @@
-/*
-( ) mudar tamanho do vetor para 50
-( ) tratar erro de digitar em formato diferente (try and catch)
-( ) melhoras as msgs apresentadas ao usuário*/
 package ap2_ado1;
 
 import java.util.Scanner;
@@ -10,6 +6,7 @@ public class AP2_ADO1 {
 
     static Scanner console = new Scanner(System.in);
 
+    //mudar tamanho do vetor para 50
     public static void main(String[] args) {
         String[] listaNomes = new String[5];
         boolean sair = false;
@@ -19,7 +16,7 @@ public class AP2_ADO1 {
 
             switch (opcao) {
                 case 0:
-                    System.out.println("-- Até mais! --");
+                    System.out.println("*~~ ATÉ MAIS! ~~*");
                     sair = true;
                     break;
                 case 1:
@@ -35,20 +32,29 @@ public class AP2_ADO1 {
                     removeNome(listaNomes);
                     break;
                 default:
-                    System.out.println("-- Escolha inválida --");
+                    System.out.println("--- ESCOLHA INVÁLIDA ---");
             }
         } while (!sair);
     }
 
     static int mostrarMenu() {
-        System.out.println("\n~~ MENU ~~");
-        System.out.println("1 - Adicionar um novo nome;\n"
-                + "2 - Apresentar os nomes;\n"
-                + "3 - Pesquisar um nome;\n"
-                + "4 - Remover um nome;\n"
-                + "0 - Sair.");
-        System.out.print("~Digite a opção desejada: ");
-        int opcao = Integer.parseInt(console.nextLine());
+        boolean ok = false;
+        int opcao = 0;
+        while (!ok) {
+            try {
+                System.out.println("\n~~ MENU ~~");
+                System.out.println("1 - Adicionar um novo nome;\n"
+                        + "2 - Apresentar os nomes;\n"
+                        + "3 - Pesquisar um nome;\n"
+                        + "4 - Remover um nome;\n"
+                        + "0 - Sair.");
+                System.out.print("~Digite a opção desejada: ");
+                opcao = Integer.parseInt(console.nextLine());
+                ok = true;
+            } catch (Exception e) {
+                System.out.println("--- POR FAVOR, DIGITE UMA OPÇÃO VÁLIDA ---");
+            }
+        }
 
         return opcao;
     }
@@ -61,54 +67,39 @@ public class AP2_ADO1 {
         for (int i = 0; i < listaNomes.length; i++) {
             if (listaNomes[i] == null) {
                 listaNomes[i] = nome;
-                System.out.println("-- Nome adicionado com sucesso --");
+                System.out.println("--- NOME ADICIONADO COM SUCESSO ---");
                 break;
             } else if (listaNomes[i].equals(nome)) {
-                System.out.println("-- Nome já existente na lista --");
+                System.out.println("--- NOME JÁ EXISTENTE NA LISTA ---");
                 break;
             } else if (i == (listaNomes.length - 1)) {
-                System.out.println("-- Lista cheia. Não é possível adicionar mais nomes--");
+                System.out.println("--- LISTA CHEIA. NÃO É POSSÍVEL ADICIONAR MAIS NOMES ---");
             }
         }
 
         return listaNomes;
     }
 
-    /*static void apresentaNomes(String[] listaNomes) {
-        int vazio = 0;
-
-        for (int i = 0; i < listaNomes.length; i++) {
-            if (listaNomes[i] == null) {
-                vazio++;
-                //System.out.println("vazios: " +vazio);
-            } else {
-                System.out.printf("[%d]: %s\n", i, listaNomes[i]);
-            }
-        }
-
-        if (vazio == listaNomes.length) {
-            System.out.println("-- Lista vazia --");
-        }
-    }*/
     static void apresentaNomes(String[] listaNomes) {
         for (int i = 0; i < listaNomes.length; i++) {
             if (listaNomes[i] != null) {
                 System.out.printf("> %s\n", listaNomes[i]);
                 if (i == (listaNomes.length - 1)) {
-                    System.out.println("-- Fim da lista --");
+                    System.out.println("--- FIM DA LISTA ---");
                 }
             } else {
                 if (listaNomes[0] == null) {
-                    System.out.println("-- Lista vazia --");
+                    System.out.println("--- LISTA VAZIA ---");
                     break;
                 } else if (listaNomes[i] == null) {
-                    System.out.println("-- Fim da lista --");
+                    System.out.println("--- FIM DA LISTA ---");
                     break;
                 }
             }
         }
     }
 
+    //verificar erro qndo nn encontra
     static void pesquisaNome(String[] listaNomes) {
         System.out.print("Nome a ser pesquisado: ");
         String pesquisa = console.nextLine();
@@ -116,10 +107,10 @@ public class AP2_ADO1 {
 
         for (int i = 0; i < listaNomes.length; i++) {
             if (listaNomes[i].equals(pesquisa)) {
-                System.out.printf("-- Nome encontrado na posição [%d] do vetor --", i);
+                System.out.printf("--- NOME ENCONTRADO NA POSIÇÃO [%d] DO VETOR ---", i);
                 break;
             } else if (i == (listaNomes.length - 1)) {
-                System.out.println("-- Nome não encontrado na lista --");
+                System.out.println("--- NOME NÃO ENCONTRADO NA LISTA ---");
             }
         }
     }
@@ -136,9 +127,8 @@ sucessivamente. Não podem haver posições vazias no meio do vetor.*/
         boolean aus = false;
 
         for (int i = 0; i < listaNomes.length; i++) {
-            //System.out.println("i: " + i);
             if (i == (listaNomes.length - 1) && !aus) {
-                System.out.println("-- Nome não encontrado na lista --");
+                System.out.println("--- NOME NÃO ENCONTRADO ---");
             } else if (listaNomes[i] == null) {
                 if (i < (listaNomes.length - 1)) {
                     listaNomes[i] = listaNomes[i + 1];
@@ -146,13 +136,12 @@ sucessivamente. Não podem haver posições vazias no meio do vetor.*/
             } else if (listaNomes[i].equals(nomeDelet)) {
                 aus = true;
                 listaNomes[i] = null;
-                System.out.println("-- Nome removido com sucesso --");
+                System.out.println("--- NOME REMOVIDO COM SUCESSO ---");
 
                 if (i == 0) {
                     i = 0;
                 } else {
                     i--;
-                    //System.out.println("i--: " + i);
                 }
             }
         }
