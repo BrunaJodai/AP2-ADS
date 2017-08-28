@@ -101,7 +101,10 @@ public class AP2_ADO1 {
     static void apresentaNomes(String[] listaNomes) {
         for (int i = 0; i < listaNomes.length; i++) {
             if (listaNomes[i] != null) {
-                System.out.printf("[%d]: %s\n", i, listaNomes[i]);
+                System.out.printf("> %s\n", listaNomes[i]);
+                if (i == (listaNomes.length - 1)) {
+                    System.out.println("-- Fim da lista --");
+                }
             } else {
                 if (listaNomes[0] == null) {
                     System.out.println("-- Lista vazia --");
@@ -139,7 +142,7 @@ sucessivamente. Não podem haver posições vazias no meio do vetor.*/
         System.out.print("Nome que deseja remover: ");
         String nomeDelet = console.nextLine();
         nomeDelet = nomeDelet.toUpperCase().trim();
-        
+
         boolean aus = false;
 
         for (int i = 0; i < listaNomes.length; i++) {
