@@ -1,13 +1,5 @@
-/* Criar um programa para o gerenciamento de uma lista de nomes. Os nomes devem ser armazenados em um
-vetor do tipo String de tamanho 50. O programa deve possuir o seguinte menu:
-( )1 - Adicionar um novo nome
-( )2 - Apresentar os nomes
-( )3 - Pesquisar um nome
-( )4 - Remover um nome
-(x)0 - Sair
-Observações:
-
-
+/*
+( ) mudar tamanho do vetor para 50
 ( ) tratar erro de digitar em formato diferente (try and catch)
 ( ) melhoras as msgs apresentadas ao usuário*/
 package ap2_ado1;
@@ -133,8 +125,6 @@ public class AP2_ADO1 {
     }
 
     /* ~AO REMOVER UM NOME:
-(x) Ler via teclado o nome a ser removido;
-( ) Se o nome informado não estiver na lista, apresentar uma mensagem indicativa ao usuário;
 ( ) A posição que contém o nome a ser removido deve ser preenchida com o próximo nome e assim
 sucessivamente. Não podem haver posições vazias no meio do vetor.*/
     //ultimos nomes repetidos
