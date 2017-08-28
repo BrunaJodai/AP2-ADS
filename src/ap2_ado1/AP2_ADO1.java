@@ -6,11 +6,7 @@ vetor do tipo String de tamanho 50. O programa deve possuir o seguinte menu:
 ( )4 - Remover um nome
 (x)0 - Sair
 Observações:
- ~AO REMOVER UM NOME:
-(x) Ler via teclado o nome a ser removido;
-( ) Se o nome informado não estiver na lista, apresentar uma mensagem indicativa ao usuário;
-( ) A posição que contém o nome a ser removido deve ser preenchida com o próximo nome e assim
-sucessivamente. Não podem haver posições vazias no meio do vetor.
+
 
 ( ) tratar erro de digitar em formato diferente (try and catch)
 ( ) melhoras as msgs apresentadas ao usuário*/
@@ -86,8 +82,7 @@ public class AP2_ADO1 {
         return listaNomes;
     }
 
-    //mostrando somente a primeira posição do vetor
-    static void apresentaNomes(String[] listaNomes) {
+    /*static void apresentaNomes(String[] listaNomes) {
         int vazio = 0;
 
         for (int i = 0; i < listaNomes.length; i++) {
@@ -101,6 +96,21 @@ public class AP2_ADO1 {
 
         if (vazio == listaNomes.length) {
             System.out.println("-- Lista vazia --");
+        }
+    }*/
+    
+    static void apresentaNomes(String[] listaNomes) {
+        for (int i = 0; i < listaNomes.length; i++) {
+            if (listaNomes[i] != null) {
+                System.out.printf("[%d]: %s\n", i, listaNomes[i]);
+            } else {
+                if (listaNomes[0] == null) {
+                    System.out.println("-- Lista vazia --");
+                    break;
+                } else if (listaNomes[i] == null) {
+                    System.out.println("-- Fim da lista --");
+                }
+            }
         }
     }
 
@@ -119,6 +129,11 @@ public class AP2_ADO1 {
         }
     }
 
+    /* ~AO REMOVER UM NOME:
+(x) Ler via teclado o nome a ser removido;
+( ) Se o nome informado não estiver na lista, apresentar uma mensagem indicativa ao usuário;
+( ) A posição que contém o nome a ser removido deve ser preenchida com o próximo nome e assim
+sucessivamente. Não podem haver posições vazias no meio do vetor.*/
     static String[] removeNome(String[] listaNomes) {
         System.out.print("Nome que deseja remover: ");
         String nomeDelet = console.nextLine();
