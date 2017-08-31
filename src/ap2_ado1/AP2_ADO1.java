@@ -1,3 +1,7 @@
+/* TADS-B - 2º Semestre - SENAC - 31/08/2017
+   Algoritmo e Programação II - Profº Alexandre dos Santos Mignon
+   Aluna: Bruna Sayuri Susuke Jodai */
+
 package ap2_ado1;
 
 import java.util.Scanner;
