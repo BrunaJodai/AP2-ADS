@@ -7,6 +7,7 @@ public class AP2_ADO1 {
     static Scanner console = new Scanner(System.in);
 
     //mudar tamanho do vetor para 50
+    //trocar upperCase por ignore case
     public static void main(String[] args) {
         String[] listaNomes = new String[5];
         boolean sair = false;
@@ -80,7 +81,27 @@ public class AP2_ADO1 {
         return listaNomes;
     }
 
+    //arrumar o erro de qndo remove o primeiro nome, aparece a msg de lista vazia
+    //mostra os nomes enquanto a posição no vetor != null, e no final avisa ao usuário de que chegou no fim da lista
     static void apresentaNomes(String[] listaNomes) {
+        for (int i = 0; i < listaNomes.length; i++) {
+            //possibilidade de deixar esta condição pra lista vazia fora do for
+            if (listaNomes[0] == null) {
+                System.out.println("--- LISTA VAZIA ---");
+                break;
+            } else if (listaNomes[i] != null) {
+                System.out.printf("> %s\n", listaNomes[i]);
+                if (i == (listaNomes.length - 1)) {
+                    System.out.println("--- FIM DA LISTA ---");
+                }
+            } else if (listaNomes[i] == null) {
+                System.out.println("--- FIM DA LISTA ---");
+                break;
+            }
+        }
+    }
+
+    /*static void apresentaNomes(String[] listaNomes) {
         for (int i = 0; i < listaNomes.length; i++) {
             if (listaNomes[i] != null) {
                 System.out.printf("> %s\n", listaNomes[i]);
@@ -97,8 +118,7 @@ public class AP2_ADO1 {
                 }
             }
         }
-    }
-
+    }*/
     //verificar erro qndo nn encontra
     static void pesquisaNome(String[] listaNomes) {
         System.out.print("Nome a ser pesquisado: ");
@@ -106,7 +126,7 @@ public class AP2_ADO1 {
         pesquisa = pesquisa.toUpperCase().trim();
 
         for (int i = 0; i < listaNomes.length; i++) {
-            if (listaNomes[i].equals(pesquisa)) {
+            if (pesquisa.equals(listaNomes[i])) {
                 System.out.printf("--- NOME ENCONTRADO NA POSIÇÃO [%d] DO VETOR ---", i);
                 break;
             } else if (i == (listaNomes.length - 1)) {
@@ -115,26 +135,25 @@ public class AP2_ADO1 {
         }
     }
 
-    /* ~AO REMOVER UM NOME:
-( ) A posição que contém o nome a ser removido deve ser preenchida com o próximo nome e assim
-sucessivamente. Não podem haver posições vazias no meio do vetor.*/
-    //ultimos nomes repetidos
     static String[] removeNome(String[] listaNomes) {
         System.out.print("Nome que deseja remover: ");
         String nomeDelet = console.nextLine();
         nomeDelet = nomeDelet.toUpperCase().trim();
 
-        boolean aus = false;
+        boolean enc = false;
 
         for (int i = 0; i < listaNomes.length; i++) {
-            if (i == (listaNomes.length - 1) && !aus) {
+            if (i == (listaNomes.length - 1) && !enc) {
                 System.out.println("--- NOME NÃO ENCONTRADO ---");
+                //move os nomes
             } else if (listaNomes[i] == null) {
                 if (i < (listaNomes.length - 1)) {
                     listaNomes[i] = listaNomes[i + 1];
+                    listaNomes[i + 1] = null;
                 }
+                //remove o nome e altera o valor de i, para fazer a verificação novamente
             } else if (listaNomes[i].equals(nomeDelet)) {
-                aus = true;
+                enc = true;
                 listaNomes[i] = null;
                 System.out.println("--- NOME REMOVIDO COM SUCESSO ---");
 
