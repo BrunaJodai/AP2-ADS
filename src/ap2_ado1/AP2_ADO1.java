@@ -84,20 +84,21 @@ public class AP2_ADO1 {
     //arrumar o erro de qndo remove o primeiro nome, aparece a msg de lista vazia
     //mostra os nomes enquanto a posição no vetor != null, e no final avisa ao usuário de que chegou no fim da lista
     static void apresentaNomes(String[] listaNomes) {
-        for (int i = 0; i < listaNomes.length; i++) {
-            //possibilidade de deixar esta condição pra lista vazia fora do for
-            if (listaNomes[0] == null) {
-                System.out.println("--- LISTA VAZIA ---");
-                break;
-            } else if (listaNomes[i] != null) {
-                System.out.printf("> %s\n", listaNomes[i]);
-                if (i == (listaNomes.length - 1)) {
+        if (listaNomes[0] == null) {
+            System.out.println("--- LISTA VAZIA ---");
+        } else {
+            for (int i = 0; i < listaNomes.length; i++) {
+                if (listaNomes[i] != null) {
+                    System.out.printf("> %s\n", listaNomes[i]);
+                    if (i == (listaNomes.length - 1)) {
+                        System.out.println("--- FIM DA LISTA ---");
+                    }
+                } else if (listaNomes[i] == null) {
                     System.out.println("--- FIM DA LISTA ---");
+                    break;
                 }
-            } else if (listaNomes[i] == null) {
-                System.out.println("--- FIM DA LISTA ---");
-                break;
             }
+
         }
     }
 
@@ -135,6 +136,7 @@ public class AP2_ADO1 {
         }
     }
 
+    //erro ao remover nome na primeira posição do vetor
     static String[] removeNome(String[] listaNomes) {
         System.out.print("Nome que deseja remover: ");
         String nomeDelet = console.nextLine();
