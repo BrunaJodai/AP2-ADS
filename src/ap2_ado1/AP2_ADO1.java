@@ -1,5 +1,5 @@
 /* TADS-B - 2º Semestre - SENAC - 31/08/2017
-   Algoritmo e Programação II - Profº Alexandre dos Santos Mignon
+   Algoritmo e Programação II - ADO1 - Profº Alexandre dos Santos Mignon
    Aluna: Bruna Sayuri Susuke Jodai */
 
 package ap2_ado1;
