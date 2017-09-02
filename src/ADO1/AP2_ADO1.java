@@ -2,7 +2,7 @@
    Algoritmo e Programação II - ADO1 - Profº Alexandre dos Santos Mignon
    Aluna: Bruna Sayuri Susuke Jodai */
 
-package ap2_ado1;
+package ADO1;
 
 import java.util.Scanner;
 
