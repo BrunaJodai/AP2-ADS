@@ -6,9 +6,9 @@ public class Ex01_tvFuncoes {
     private boolean liga;
     private int canal;
     private int vol;
-    
+
     //metodo construtor
-    public Ex01_tvFuncoes(){
+    public Ex01_tvFuncoes() {
         liga = false;
         canal = 2;
         vol = 10;
@@ -43,20 +43,4 @@ public class Ex01_tvFuncoes {
             this.vol = vol;
         }
     }
-
-    public void imprimeInfos() {
-        String status;
-        if (liga) {
-            status = "Ligada";
-        } else {
-            status = "Desligada";
-        }
-
-        System.out.println("╔═ ═ ═ ═ ═ ═ ═ ═ ═ ═╗");
-        System.out.println("    STATUS TV: " + status);
-        System.out.println("        CANAL: " + canal);
-        System.out.println("       VOLUME: " + vol);
-        System.out.println("╚═ ═ ═ ═ ═ ═ ═ ═ ═ ═╝");
-    }
-
 }
