@@ -3,9 +3,16 @@ package ADO2;
 
 public class Ex01_tvFuncoes {
 
-    private boolean liga = false;
-    private int canal = 2;
-    private int vol = 10;
+    private boolean liga;
+    private int canal;
+    private int vol;
+    
+    //metodo construtor
+    public Ex01_tvFuncoes(){
+        liga = false;
+        canal = 2;
+        vol = 10;
+    }
 
     public void ligar() {
         liga = true;

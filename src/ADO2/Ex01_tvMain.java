@@ -1,4 +1,5 @@
 package ADO2;
+
 /* Bruna Sayuri Susuke Jodai - ADO2 - Algoritmo e Programação II - 2TADS-B */
 import java.util.Scanner;
 
@@ -10,11 +11,18 @@ public class Ex01_tvMain {
         Ex01_tvFuncoes tv = new Ex01_tvFuncoes();
 
         int canal = -1;
-        int opcao;
+        int opcao = -1;
 
         do {
-            tv.imprimeInfos();
-            opcao = controle();
+            while (opcao < 0 || opcao > 4 || !tv.getLiga()) {
+                tv.imprimeInfos();
+                opcao = controle();
+                if(opcao < 0 || opcao > 4){
+                    System.out.println("OPÇÃO INVÁLIDA");
+                } else if (!tv.getLiga()){
+                    System.out.println("TV DESLIGADA");
+                }                
+            }
 
             switch (opcao) {
                 case 0:
@@ -49,20 +57,20 @@ public class Ex01_tvMain {
 
     public static int controle() {
         int opcao = -1;
-        do {
-            try {
-                System.out.println("\n~~ CONTROLE ~~");
-                System.out.println("1 - Liga/Desliga TV;\n"
-                        + "2 - Muda canal;\n"
-                        + "3 - Aumenta volume;\n"
-                        + "4 - Diminui volume;\n"
-                        + "0 - Cancela.");
-                System.out.print("~Digite a opção desejada: ");
-                opcao = Integer.parseInt(console.nextLine());
-            } catch (NumberFormatException e) {
+        //do {
+        //try {
+        System.out.println("\n~~ CONTROLE ~~");
+        System.out.println("1 - Liga/Desliga TV;\n"
+                + "2 - Muda canal;\n"
+                + "3 - Aumenta volume;\n"
+                + "4 - Diminui volume;\n"
+                + "0 - Cancela.");
+        System.out.print("~Digite a opção desejada: ");
+        opcao = Integer.parseInt(console.nextLine());
+        /*} catch (NumberFormatException e) {
                 System.out.println("--- POR FAVOR, DIGITE UMA OPÇÃO VÁLIDA ---");
-            }
-        } while (opcao < 0 || opcao > 4);
+            }*/
+        //} while (opcao < 0 || opcao > 4);
 
         return opcao;
     }
